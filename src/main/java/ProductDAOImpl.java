@@ -19,9 +19,11 @@ public class ProductDAOImpl  extends BaseDAO implements  ProductDAO{
             ResultSet resultSet = pStatement.executeQuery()){
             while(resultSet.next()) {
                 Product product = new Product();
+                //System.out.println(resultSet.getString("name"));
                 product.setName(resultSet.getString("name"));
                 product.setDescription(resultSet.getString("description"));
                 product.setPrice(resultSet.getBigDecimal("price"));
+                products.add(product);
             }
             }catch (SQLException e){
             throw  new DAOException("Error  getting products. "+ e.getMessage());
